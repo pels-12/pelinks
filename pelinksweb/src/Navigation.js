@@ -18,48 +18,48 @@ const Navigation = () => {
   };
 
   const menuItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '/#home' },
     {
       name: 'About Us',
-      href: '#about',
+      href: '/#about',
       submenu: [
-        { name: 'Board Members', href: '#board' },
-        { name: 'Management', href: '#management' },
-        { name: 'Core Values', href: '#values' }
+        { name: 'Board Members', href: '/#board' },
+        { name: 'Management', href: '/#management' },
+        { name: 'Core Values', href: '/#values' }
       ]
     },
     {
       name: 'Services',
-      href: '#services',
+      href: '/#services',
       submenu: [
-        { name: 'Signage & LED Displays', href: '#signage' },
-        { name: 'Smart Home Technology', href: '#smart-home' },
-        { name: 'Security Systems', href: '#security' },
-        { name: 'General Printing', href: '#printing' },
-        { name: 'Cladding & Facade Systems', href: '#cladding' },
-        { name: 'IT & Tech Consultancy', href: '#it-tech' },
-        { name: 'Procurement & Contracts', href: '#procurement' }
+        { name: 'Signage & LED Displays', href: '/#signage' },
+        { name: 'Smart Home Technology', href: '/#smart-home' },
+        { name: 'Security Systems', href: '/#security' },
+        { name: 'General Printing', href: '/#printing' },
+        { name: 'Cladding & Facade Systems', href: '/#cladding' },
+        { name: 'IT & Tech Consultancy', href: '/#it-tech' },
+        { name: 'Procurement & Contracts', href: '/#procurement' }
       ]
     },
     {
       name: 'Products',
-      href: '#products',
+      href: '/#products',
       submenu: [
-        { name: 'Pelinks Visuals', href: '#visuals' },
-        { name: 'Pelinks Solutions', href: '#solutions' }
+        { name: 'Pelinks Visuals', href: '/pelinks-visuals' },
+        { name: 'Pelinks Solutions', href: '/#solutions' }
       ]
     },
-    { name: 'Industries We Serve', href: '#industries' },
-    { name: 'Gallery', href: '#gallery' },
+    { name: 'Industries We Serve', href: '/industries' },
+    { name: 'Gallery', href: '/gallery' },
     {
       name: 'Resources',
-      href: '#resources',
+      href: '/#resources',
       submenu: [
-        { name: 'Portfolio', href: '#portfolio' },
-        { name: 'Download Our Profile', href: '#profile' }
+        { name: 'Portfolio', href: '/#portfolio' },
+        { name: 'Download Our Profile', href: '/#profile' }
       ]
     },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (

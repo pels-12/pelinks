@@ -102,7 +102,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.a
-            href="#contact"
+            href="/#contact"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#007EA7] rounded-lg shadow-lg shadow-[#007EA7]/25 hover:shadow-xl hover:shadow-[#007EA7]/35 transition-all duration-300"
@@ -111,7 +111,7 @@ export default function HeroSection() {
           </motion.a>
 
           <motion.a
-            href="#services"
+            href="/#services"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white border-2 border-white/20 rounded-lg hover:border-white/40 hover:bg-white/5 transition-all duration-300"

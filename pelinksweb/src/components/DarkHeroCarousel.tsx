@@ -56,7 +56,7 @@ export default function DarkHeroCarousel({ slides, scrollerImages }: DarkHeroCar
         subtitle: 'Professional execution with clean details and durable materials.',
         imageSrc: '/PSL_WHITE_CYAN_ICON_PNG.png',
         imageAlt: 'Facade icon',
-        primaryCta: { label: 'Our Work', href: '#gallery' },
+        primaryCta: { label: 'Our Work', href: '/gallery' },
         secondaryCta: { label: 'Contact', href: '#contact' },
       },
       {
@@ -318,7 +318,7 @@ export default function DarkHeroCarousel({ slides, scrollerImages }: DarkHeroCar
               <h2 className="text-lg font-semibold">Gallery Preview</h2>
               <p className="text-sm text-white/60">A quick scroll of featured visuals</p>
             </div>
-            <a href="#gallery" className="text-sm font-semibold text-white/80 hover:text-white transition-colors">
+            <a href="/gallery" className="text-sm font-semibold text-white/80 hover:text-white transition-colors">
               View full gallery →
             </a>
           </div>

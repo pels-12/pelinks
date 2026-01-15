@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import InfoBar from './InfoBar';
 import DropdownMenu from './DropdownMenu';
@@ -27,46 +28,50 @@ function Navbar({ onLoginClick }: NavbarProps) {
   const menuItems: NavLink[] = [
     {
       label: 'About Us',
-      href: '#about',
+      href: '/#about',
+      isRoute: true,
       submenu: [
-        { label: 'Board Members', href: '#board' },
-        { label: 'Management', href: '#management' },
-        { label: 'Core Values', href: '#values' },
+        { label: 'Board Members', href: '/#board', isRoute: true },
+        { label: 'Management', href: '/#management', isRoute: true },
+        { label: 'Core Values', href: '/#values', isRoute: true },
       ],
     },
     {
       label: 'Services',
-      href: '#services',
+      href: '/#services',
+      isRoute: true,
       submenu: [
-        { label: 'Signage & LED Displays', href: '#signage' },
-        { label: 'Smart Home Technology', href: '#smart-home' },
-        { label: 'Security Systems', href: '#security' },
-        { label: 'General Printing', href: '#printing' },
-        { label: 'Fabrication & Construction', href: '#fabrication' },
-        { label: 'Cladding & Facade Systems', href: '#cladding' },
-        { label: 'IT & Tech Consultancy', href: '#it-tech' },
-        { label: 'Procurement & Contracts', href: '#procurement' },
+        { label: 'Signage & LED Displays', href: '/#signage', isRoute: true },
+        { label: 'Smart Home Technology', href: '/#smart-home', isRoute: true },
+        { label: 'Security Systems', href: '/#security', isRoute: true },
+        { label: 'General Printing', href: '/#printing', isRoute: true },
+        { label: 'Fabrication & Construction', href: '/#fabrication', isRoute: true },
+        { label: 'Cladding & Facade Systems', href: '/#cladding', isRoute: true },
+        { label: 'IT & Tech Consultancy', href: '/#it-tech', isRoute: true },
+        { label: 'Procurement & Contracts', href: '/#procurement', isRoute: true },
       ],
     },
     {
       label: 'Products',
-      href: '#products',
+      href: '/#products',
+      isRoute: true,
       submenu: [
         { label: 'Pelinks Visuals', href: '/pelinks-visuals', isRoute: true },
-        { label: 'Pelinks Solutions', href: '#solutions' },
+        { label: 'Pelinks Solutions', href: '/#solutions', isRoute: true },
       ],
     },
-    { label: 'Industries We Serve', href: '#industries' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Industries We Serve', href: '/industries', isRoute: true },
+    { label: 'Gallery', href: '/gallery', isRoute: true },
     {
       label: 'Resources',
-      href: '#resources',
+      href: '/#resources',
+      isRoute: true,
       submenu: [
-        { label: 'Portfolio', href: '#portfolio' },
-        { label: 'Download Our Profile', href: '#profile' },
+        { label: 'Portfolio', href: '/#portfolio', isRoute: true },
+        { label: 'Download Our Profile', href: '/#profile', isRoute: true },
       ],
     },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact', href: '/contact', isRoute: true },
   ];
 
   return (
@@ -84,9 +89,9 @@ function Navbar({ onLoginClick }: NavbarProps) {
         <div className="w-full max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between lg:justify-start">
             {/* Logo - Home Button */}
-            <a href="#home" className="flex-shrink-0 mx-auto lg:mx-0 lg:ml-40 xl:ml-48">
+            <Link to="/" className="flex-shrink-0 mx-auto lg:mx-0 lg:ml-40 xl:ml-48">
               <Logo className="cursor-pointer" />
-            </a>
+            </Link>
 
             {/* Desktop Menu - Center */}
             <div className="hidden lg:flex items-center gap-6 xl:gap-8 flex-1 justify-center">
@@ -99,6 +104,14 @@ function Navbar({ onLoginClick }: NavbarProps) {
                       className="text-base font-medium text-gray-700 hover:text-[#003459]"
                     />
                   </div>
+                ) : item.isRoute ? (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="text-base text-gray-700 font-medium hover:text-[#003459] transition-colors duration-200 no-underline"
+                  >
+                    {item.label}
+                  </Link>
                 ) : (
                   <a
                     key={item.label}
@@ -170,8 +183,8 @@ function Navbar({ onLoginClick }: NavbarProps) {
                   }`}
                 >
                   <div className="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden py-2">
-                    <a
-                      href="#client-login"
+                    <Link
+                      to="/under-construction"
                       className="flex items-center gap-3 px-5 py-4 hover:bg-blue-50 transition-colors duration-150 group"
                     >
                       <div className="p-2 bg-gray-100 rounded-lg group-hover:bg-[#003459] transition-colors">
@@ -180,9 +193,9 @@ function Navbar({ onLoginClick }: NavbarProps) {
                         </svg>
                       </div>
                       <span className="font-semibold text-gray-700 group-hover:text-[#003459]">Client Login</span>
-                    </a>
-                    <a
-                      href="#staff-login"
+                    </Link>
+                    <Link
+                      to="/under-construction"
                       className="flex items-center gap-3 px-5 py-4 hover:bg-blue-50 transition-colors duration-150 group"
                     >
                       <div className="p-2 bg-gray-100 rounded-lg group-hover:bg-[#003459] transition-colors">
@@ -191,7 +204,7 @@ function Navbar({ onLoginClick }: NavbarProps) {
                         </svg>
                       </div>
                       <span className="font-semibold text-gray-700 group-hover:text-[#003459]">Staff Login</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@ const services: ServiceScreen[] = [
     id: 1,
     title: "Signage Solutions",
     description: "Professional signage and LED displays for storefronts, buildings, and outdoor branding. Built to last in Nigerian weather.",
-    backgroundImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80&fit=crop",
+    backgroundImage: "/images/SIGNAGE/1035935666.jpg",
   },
   {
     id: 2,

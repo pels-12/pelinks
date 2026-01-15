@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 
 const services = [
@@ -131,15 +132,21 @@ export default function ServicesSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <button className="px-8 py-4 bg-[#007EA7] text-white font-semibold rounded-lg hover:bg-[#006891] transition-colors active:scale-95">
+          <Link
+            to="/contact"
+            className="px-8 py-4 bg-[#007EA7] text-white font-semibold rounded-lg hover:bg-[#006891] transition-colors active:scale-95 text-center"
+          >
             Request a Consultation
-          </button>
+          </Link>
           <button className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:border-white/50 hover:bg-white/5 transition-all active:scale-95">
             Download Our Profile
           </button>
-          <button className="px-8 py-4 border-2 border-[#007EA7] text-[#007EA7] font-semibold rounded-lg hover:bg-[#007EA7]/10 transition-all active:scale-95">
+          <Link
+            to="/gallery"
+            className="px-8 py-4 border-2 border-[#007EA7] text-[#007EA7] font-semibold rounded-lg hover:bg-[#007EA7]/10 transition-all active:scale-95 text-center"
+          >
             Gallery
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>

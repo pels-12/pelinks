@@ -129,6 +129,14 @@ function MobileMenu({ isOpen, items, onClose, onLoginClick }: MobileMenuProps) {
                           )}
                         </AnimatePresence>
                       </div>
+                    ) : item.isRoute ? (
+                      <Link
+                        to={item.href}
+                        className="block px-4 py-4 text-[#F5F5F5] text-lg font-bold hover:bg-white/10 rounded-lg transition-all duration-200 border border-white/10 hover:border-white/30"
+                        onClick={onClose}
+                      >
+                        {item.label}
+                      </Link>
                     ) : (
                       <a
                         href={item.href}

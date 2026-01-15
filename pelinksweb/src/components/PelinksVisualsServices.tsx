@@ -152,7 +152,7 @@ export default function PelinksVisualsServices() {
         >
           <div className="inline-flex flex-col sm:flex-row gap-4">
             <a
-              href="#consultation"
+              href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#007EA7] text-white font-semibold text-lg rounded-lg hover:bg-[#006891] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               Request a Consultation
@@ -162,7 +162,7 @@ export default function PelinksVisualsServices() {
             </a>
             
             <a
-              href="#gallery"
+              href="/gallery"
               className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-[#003459] text-[#003459] font-semibold text-lg rounded-lg hover:bg-[#003459] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
             >
               View Our Gallery

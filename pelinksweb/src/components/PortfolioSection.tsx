@@ -226,7 +226,7 @@ export default function PortfolioSection() {
         >
           <div className="inline-flex flex-col sm:flex-row gap-4">
             <a
-              href="#consultation"
+              href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#007EA7] text-white font-semibold text-lg rounded-xl hover:bg-[#006891] transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-[#007EA7]/40 hover:scale-105"
             >
               Start Your Project
@@ -235,7 +235,7 @@ export default function PortfolioSection() {
               </svg>
             </a>
             <a
-              href="#all-projects"
+              href="/gallery"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white font-semibold text-lg rounded-xl hover:bg-white/10 hover:border-[#007EA7]/60 transition-all duration-300 hover:scale-105"
             >
               View Full Portfolio
@@ -301,7 +301,7 @@ export default function PortfolioSection() {
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center justify-center px-6 py-3 bg-[#007EA7] text-white font-semibold rounded-lg hover:bg-[#006891] transition-colors"
                   >
                     Discuss Similar Project
