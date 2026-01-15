@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const GalleryPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState(new Set());
 
   const filters = [
@@ -197,6 +197,11 @@ const GalleryPage = () => {
     ? gallerySections
     : gallerySections.filter(section => section.id === activeFilter);
 
+  const visibleImages = useMemo(
+    () => filteredSections.flatMap((section) => section.images),
+    [filteredSections]
+  );
+
   const handleImageError = (imageSrc) => {
     setImageErrors(prev => new Set([...prev, imageSrc]));
   };
@@ -214,11 +219,30 @@ const GalleryPage = () => {
   );
 
   const openLightbox = (image) => {
-    setSelectedImage(image);
+    const index = visibleImages.findIndex((img) => img.src === image.src);
+    setSelectedIndex(index >= 0 ? index : 0);
   };
 
   const closeLightbox = () => {
-    setSelectedImage(null);
+    setSelectedIndex(null);
+  };
+
+  useEffect(() => {
+    setSelectedIndex(null);
+  }, [activeFilter]);
+
+  const showPrevious = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (!visibleImages.length || selectedIndex === null) return;
+    const prevIndex = (selectedIndex - 1 + visibleImages.length) % visibleImages.length;
+    setSelectedIndex(prevIndex);
+  };
+
+  const showNext = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (!visibleImages.length || selectedIndex === null) return;
+    const nextIndex = (selectedIndex + 1) % visibleImages.length;
+    setSelectedIndex(nextIndex);
   };
 
   return (
@@ -381,7 +405,10 @@ const GalleryPage = () => {
 
       {/* Lightbox Modal */}
       <AnimatePresence>
-        {selectedImage && (
+        {selectedIndex !== null && visibleImages.length > 0 && (
+          (() => {
+            const currentImage = visibleImages[selectedIndex];
+            return (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -396,17 +423,35 @@ const GalleryPage = () => {
               className="relative max-w-4xl max-h-[90vh] w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              {imageErrors.has(selectedImage.src) ? (
+              {imageErrors.has(currentImage.src) ? (
                 <div className="bg-[#001829]/80 p-8 rounded-lg">
-                  <ImagePlaceholder type={selectedImage.type} alt={selectedImage.alt} />
+                  <ImagePlaceholder type={currentImage.type} alt={currentImage.alt} />
                 </div>
               ) : (
                 <img
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
+                  src={currentImage.src}
+                  alt={currentImage.alt}
                   className="w-full h-full object-contain rounded-lg"
                 />
               )}
+              <button
+                onClick={showPrevious}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-3 hover:bg-black/70 transition-colors"
+                aria-label="Previous image"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                onClick={showNext}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-3 hover:bg-black/70 transition-colors"
+                aria-label="Next image"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
               <button
                 onClick={closeLightbox}
                 className="absolute top-4 right-4 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
@@ -416,11 +461,13 @@ const GalleryPage = () => {
                 </svg>
               </button>
               <div className="absolute bottom-4 left-4 right-4 bg-black/50 text-white p-4 rounded-lg">
-                <p className="font-medium">{selectedImage.type}</p>
-                <p className="text-sm opacity-90">{selectedImage.alt}</p>
+                <p className="font-medium">{currentImage.type}</p>
+                <p className="text-sm opacity-90">{currentImage.alt}</p>
               </div>
             </motion.div>
           </motion.div>
+            );
+          })()
         )}
       </AnimatePresence>
     </div>
