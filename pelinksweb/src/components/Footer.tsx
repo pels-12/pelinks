@@ -221,7 +221,7 @@ export default function Footer() {
               © {currentYear} Pelinks Synergy Ltd. All rights reserved.
             </p>
             <p className="text-[#BFC7CE] text-xs sm:text-sm text-left sm:text-right">
-              Designed & Built with Excellence
+              Developed by DevRox
             </p>
           </div>
         </div>

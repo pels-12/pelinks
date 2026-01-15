@@ -8,6 +8,7 @@ import PelinksVisuals from './PelinksVisuals';
 import ContactPage from './components/ContactPage';
 import GalleryPage from './components/GalleryPage';
 import UnderConstruction from './components/UnderConstruction';
+import FloatingActions from './components/FloatingActions';
 
 function AppContent() {
   const location = useLocation();
@@ -36,14 +37,17 @@ function AppContent() {
       {showPreLanding ? (
         <PreLanding onComplete={handlePreLandingComplete} />
       ) : (
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/pelinks-visuals" element={<PelinksVisuals />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/industries" element={<UnderConstruction />} />
-          <Route path="/under-construction" element={<UnderConstruction />} />
-        </Routes>
+        <>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/pelinks-visuals" element={<PelinksVisuals />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/industries" element={<UnderConstruction />} />
+            <Route path="/under-construction" element={<UnderConstruction />} />
+          </Routes>
+          <FloatingActions />
+        </>
       )}
     </div>
   );
