@@ -1,12 +1,18 @@
 {
-  "buildCommand": "cd pelinksweb && npm install && npm run build",
-  "outputDirectory": "pelinksweb/build",
-  "installCommand": "cd pelinksweb && npm install",
-  "framework": null,
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "pelinksweb/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/pelinksweb/$1"
     }
   ]
 }
