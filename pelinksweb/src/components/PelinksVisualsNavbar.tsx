@@ -27,8 +27,8 @@ export default function PelinksVisualsNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [cartCount, setCartCount] = useState(0);
-  const [wishlistCount, setWishlistCount] = useState(0);
+  const [cartCount] = useState(0);
+  const [wishlistCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import InfoBar from './InfoBar';
 import DropdownMenu from './DropdownMenu';
