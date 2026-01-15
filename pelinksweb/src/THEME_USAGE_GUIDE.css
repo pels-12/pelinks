@@ -1,0 +1,566 @@
+/* ============================================================
+   PELINKS SYNERGY - THEME USAGE GUIDE
+   ============================================================
+   
+This document provides examples of how to use the theme system
+in your Pelinks Synergy website.
+
+IMPORTANT: Import themes.css in your index.js or App.js:
+import './themes.css';
+
+============================================================ */
+
+/* ============================================================
+   QUICK START - THEME SWITCHING
+   ============================================================ */
+
+// JavaScript - Add this to your App.js or a ThemeProvider component:
+
+const ThemeSwitcher = () => {
+  const [theme, setTheme] = React.useState('light');
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('pelinks-theme', newTheme);
+  };
+
+  React.useEffect(() => {
+    const savedTheme = localStorage.getItem('pelinks-theme') || 'light';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  return (
+    <button 
+      className="theme-switcher" 
+      onClick={toggleTheme}
+      aria-label="Toggle theme"
+    >
+      {theme === 'light' ? '🌙' : '☀️'}
+    </button>
+  );
+};
+
+/* ============================================================
+   SECTION 1: TEXT & TYPOGRAPHY
+   ============================================================ */
+
+/* HTML Examples: */
+
+<h1>Welcome to Pelinks Synergy</h1>
+<p>This is a primary text with automatic theme colors.</p>
+<p className="text-secondary">This is secondary text.</p>
+<p className="text-success">Success message</p>
+<p className="text-error">Error message</p>
+
+/* CSS Usage with Variables: */
+
+.custom-text {
+  color: var(--color-text-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.highlight {
+  color: var(--color-primary);
+  background-color: var(--color-overlay-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================
+   SECTION 2: BUTTONS
+   ============================================================ */
+
+/* HTML Examples: */
+
+<!-- Primary Button (Light: #003459, Dark: #007EA7) -->
+<button className="btn btn-primary">Get Started</button>
+
+<!-- Secondary Button -->
+<button className="btn btn-secondary">Learn More</button>
+
+<!-- Accent Button -->
+<button className="btn btn-accent">Explore Services</button>
+
+<!-- Ghost Button -->
+<button className="btn btn-ghost">Cancel</button>
+
+<!-- Button Sizes -->
+<button className="btn btn-primary btn-sm">Small</button>
+<button className="btn btn-primary">Normal</button>
+<button className="btn btn-primary btn-lg">Large</button>
+
+<!-- Disabled State -->
+<button className="btn btn-primary" disabled>Disabled</button>
+
+/* CSS for Custom Buttons: */
+
+.custom-button {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.custom-button:hover {
+  opacity: 0.9;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   SECTION 3: CARDS
+   ============================================================ */
+
+/* HTML Examples: */
+
+<div className="card">
+  <div className="card-header">
+    <h3>Service Card</h3>
+  </div>
+  <div className="card-body">
+    <p>Your service description goes here.</p>
+  </div>
+  <div className="card-footer">
+    <button className="btn btn-primary">Learn More</button>
+  </div>
+</div>
+
+/* CSS for Custom Cards: */
+
+.feature-card {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  transition: all var(--transition-base);
+}
+
+.feature-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-overlay-light);
+  transform: translateY(-4px);
+}
+
+.feature-card-title {
+  color: var(--color-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+}
+
+/* ============================================================
+   SECTION 4: NAVBAR
+   ============================================================ */
+
+/* HTML Example: */
+
+<nav className="navbar">
+  <div className="navbar-container">
+    <div className="navbar-brand">
+      <span>🔗</span>
+      <span>Pelinks Synergy</span>
+    </div>
+    <ul className="navbar-nav">
+      <li><a href="#home" className="active">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <ThemeSwitcher />
+  </div>
+</nav>
+
+/* CSS Customization: */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-surface);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.navbar-brand {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   SECTION 5: FOOTER
+   ============================================================ */
+
+/* HTML Example: */
+
+<footer>
+  <div className="footer-container">
+    <div className="footer-section">
+      <h4>About Us</h4>
+      <p className="text-secondary">Pelinks Synergy - Your one stop shop</p>
+    </div>
+    <div className="footer-section">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#signage">Signage Solutions</a></li>
+        <li><a href="#smart-home">Smart Homes & Security</a></li>
+        <li><a href="#printing">Printing Services</a></li>
+        <li><a href="#contracts">Contracts</a></li>
+      </ul>
+    </div>
+    <div className="footer-section">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+234">Phone</a></li>
+        <li><a href="mailto:info@pelinks.com">Email</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </div>
+  </div>
+  <div className="footer-bottom">
+    <p>&copy; 2026 Pelinks Synergy. All rights reserved.</p>
+  </div>
+</footer>
+
+/* ============================================================
+   SECTION 6: FORMS
+   ============================================================ */
+
+/* HTML Example: */
+
+<form className="contact-form">
+  <div className="form-group">
+    <label htmlFor="name">Full Name</label>
+    <input 
+      type="text" 
+      id="name" 
+      placeholder="Enter your name"
+      required
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="email">Email Address</label>
+    <input 
+      type="email" 
+      id="email" 
+      placeholder="you@example.com"
+      required
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="message">Message</label>
+    <textarea 
+      id="message" 
+      rows="4"
+      placeholder="Your message here..."
+    ></textarea>
+  </div>
+
+  <button type="submit" className="btn btn-primary">Send Message</button>
+</form>
+
+/* CSS Customization: */
+
+.contact-form {
+  max-width: 500px;
+  margin: var(--spacing-2xl) auto;
+  padding: var(--spacing-2xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-overlay-light);
+}
+
+/* ============================================================
+   SECTION 7: BADGES & STATUS
+   ============================================================ */
+
+/* HTML Examples: */
+
+<span className="badge">Default</span>
+<span className="badge badge-primary">Primary</span>
+<span className="badge badge-accent">Accent</span>
+<span className="badge badge-success">Success</span>
+<span className="badge badge-warning">Warning</span>
+<span className="badge badge-error">Error</span>
+
+/* ============================================================
+   SECTION 8: LAYOUT & SPACING
+   ============================================================ */
+
+/* Flexbox Layout Examples: */
+
+<div className="flex flex-between gap-lg p-xl">
+  <div>Left Content</div>
+  <div>Right Content</div>
+</div>
+
+<div className="flex flex-col gap-md p-lg">
+  <h2>Stacked Content</h2>
+  <p>Item 1</p>
+  <p>Item 2</p>
+  <p>Item 3</p>
+</div>
+
+<div className="flex flex-center">
+  <button className="btn btn-primary">Centered Button</button>
+</div>
+
+/* Grid Layout Examples: */
+
+<div className="grid grid-3 gap-lg p-2xl">
+  <div className="card">Card 1</div>
+  <div className="card">Card 2</div>
+  <div className="card">Card 3</div>
+</div>
+
+<!-- Responsive: 3 columns on desktop, 2 on tablet, 1 on mobile -->
+<div className="grid grid-4 gap-lg">
+  <div className="card">Service 1</div>
+  <div className="card">Service 2</div>
+  <div className="card">Service 3</div>
+  <div className="card">Service 4</div>
+</div>
+
+/* ============================================================
+   SECTION 9: COLOR UTILITIES
+   ============================================================ */
+
+/* Background Classes: */
+
+<div className="bg-primary p-xl">Primary Background</div>
+<div className="bg-accent p-xl">Accent Background</div>
+<div className="bg-surface p-xl">Surface Background</div>
+
+/* Text Color Classes: */
+
+<p className="text-primary">Primary Text</p>
+<p className="text-secondary">Secondary Text</p>
+<p className="text-success">Success Text</p>
+<p className="text-warning">Warning Text</p>
+<p className="text-error">Error Text</p>
+
+/* Border Classes: */
+
+<div className="border-primary p-md">Primary Border</div>
+<div className="border-accent p-md">Accent Border</div>
+<div className="border-default p-md">Default Border</div>
+
+/* ============================================================
+   SECTION 10: SHADOW & ELEVATION
+   ============================================================ */
+
+<div className="shadow-sm p-lg">Small Shadow</div>
+<div className="shadow-md p-lg">Medium Shadow</div>
+<div className="shadow-lg p-lg">Large Shadow</div>
+<div className="shadow-xl p-lg">Extra Large Shadow</div>
+
+/* ============================================================
+   SECTION 11: CUSTOM COMPONENT EXAMPLE
+   ============================================================ */
+
+/* Services Section Component */
+
+.services-section {
+  padding: var(--spacing-4xl) var(--spacing-xl);
+  background-color: var(--color-background);
+}
+
+.services-title {
+  text-align: center;
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-item {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-item:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-8px);
+  box-shadow: 0 0 0 1px var(--color-accent),
+              var(--shadow-lg);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.service-name {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.service-description {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1;
+}
+
+.service-button {
+  align-self: flex-start;
+}
+
+/* HTML Usage: */
+
+<section className="services-section">
+  <h2 className="services-title">Our Services</h2>
+  <div className="services-grid">
+    <div className="service-item">
+      <div className="service-icon">📍</div>
+      <h3 className="service-name">Signage Solutions</h3>
+      <p className="service-description">Professional signage for your business needs.</p>
+      <button className="btn btn-primary service-button">Learn More</button>
+    </div>
+    <div className="service-item">
+      <div className="service-icon">🏠</div>
+      <h3 className="service-name">Smart Homes & Security</h3>
+      <p className="service-description">Advanced security and smart home integration.</p>
+      <button className="btn btn-primary service-button">Learn More</button>
+    </div>
+    <div className="service-item">
+      <div className="service-icon">🖨️</div>
+      <h3 className="service-name">Printing Services</h3>
+      <p className="service-description">High-quality printing solutions for all your needs.</p>
+      <button className="btn btn-primary service-button">Learn More</button>
+    </div>
+  </div>
+</section>
+
+/* ============================================================
+   SECTION 12: DARK MODE CONSIDERATIONS
+   ============================================================ */
+
+/* All components automatically adapt to dark mode via CSS variables.
+   No additional styling needed!
+   
+   Light Mode (Default):
+   - Primary: #003459 (Dark Blue)
+   - Accent: #007EA7 (Teal)
+   - Background: #FFFFFF (White)
+   - Text: #1A1A1A (Dark)
+   
+   Dark Mode:
+   - Primary: #007EA7 (Teal)
+   - Accent: #00B4D8 (Bright Teal)
+   - Background: #0D1117 (Very Dark)
+   - Text: #E0E0E0 (Light)
+*/
+
+/* ============================================================
+   AVAILABLE CSS VARIABLES
+   ============================================================ */
+
+/* Colors */
+--color-primary              /* Main brand color */
+--color-accent               /* Accent color for highlights */
+--color-background           /* Page background */
+--color-surface              /* Cards/sections background */
+--color-text-primary         /* Main text color */
+--color-text-secondary       /* Secondary/muted text */
+--color-border               /* Border color */
+--color-success              /* Success state */
+--color-warning              /* Warning state */
+--color-error                /* Error state */
+--color-info                 /* Info state */
+
+/* Typography */
+--font-family                /* Sora font */
+--font-weight-light          /* 300 */
+--font-weight-normal         /* 400 */
+--font-weight-medium         /* 500 */
+--font-weight-semibold       /* 600 */
+--font-weight-bold           /* 700 */
+
+/* Sizes */
+--text-xs through --text-5xl /* Font sizes */
+--line-height-tight through --line-height-loose
+--spacing-xs through --spacing-4xl
+
+/* Effects */
+--radius-sm through --radius-full  /* Border radius */
+--shadow-sm through --shadow-xl    /* Box shadows */
+--transition-fast through --transition-slow
+
+/* ============================================================
+   MIGRATION FROM OLD THEME
+   ============================================================ */
+
+/* If you have existing CSS using hardcoded colors, replace them: */
+
+/* OLD: */
+.old-button {
+  background-color: #003459;
+  color: #FFFFFF;
+}
+
+/* NEW: */
+.new-button {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* OLD: */
+.old-card {
+  background-color: #F5F5F5;
+  border-color: #E0E0E0;
+}
+
+/* NEW: */
+.new-card {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+/* ============================================================
+   BROWSER SUPPORT
+   ============================================================ */
+
+/* CSS Variables are supported in:
+   - Chrome 49+
+   - Firefox 31+
+   - Safari 9.1+
+   - Edge 15+
+   - Opera 36+
+   
+   For older browsers, provide fallback colors:
+*/
+
+.legacy-support {
+  background-color: #003459;           /* Fallback */
+  background-color: var(--color-primary);
+}
