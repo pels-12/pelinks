@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd pelinksweb && npm install && npm run build",
+  "outputDirectory": "pelinksweb/build",
+  "installCommand": "cd pelinksweb && npm install",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
