@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const clients = [
@@ -20,7 +20,32 @@ const clients = [
 
 export default function ClientsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el || !isInView) return;
+
+    let animationFrame: number;
+    const speed = 0.4; // pixels per frame
+
+    const step = () => {
+      if (!el) return;
+      el.scrollLeft += speed;
+      // reset to start for seamless loop
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth) {
+        el.scrollLeft = 0;
+      }
+      animationFrame = requestAnimationFrame(step);
+    };
+
+    animationFrame = requestAnimationFrame(step);
+
+    return () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
+  }, [isInView]);
 
   return (
     <section ref={sectionRef} className="relative py-16 lg:py-20 px-6 bg-[#002b48] overflow-hidden">
@@ -41,25 +66,42 @@ export default function ClientsSection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6 sm:gap-8"
+          ref={scrollContainerRef}
+          className="overflow-x-auto scrollbar-hide"
+          style={{
+            scrollBehavior: 'smooth',
+            WebkitOverflowScrolling: 'touch',
+          }}
         >
-          {clients.map((client, index) => (
-            <motion.div
-              key={client.name + index}
-              initial={{ opacity: 0, y: 18 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: 0.05 * index }}
-              className="flex items-center justify-center p-4 sm:p-5 rounded-xl bg-white/5 border border-white/5 hover:border-[#007EA7]/40 transition-all duration-300"
-            >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="h-10 sm:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity duration-200 filter grayscale"
-                loading="lazy"
-              />
-            </motion.div>
-          ))}
+          <div className="flex gap-6 sm:gap-8 pb-4 min-w-min">
+            {[...clients, ...clients].map((client, index) => (
+              <motion.div
+                key={client.name + index}
+                initial={{ opacity: 0, y: 18 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: 0.05 * index }}
+                className="flex-shrink-0 w-32 sm:w-40 flex items-center justify-center p-4 sm:p-5 rounded-xl bg-white/5 border border-white/5 hover:border-[#007EA7]/40 transition-all duration-300"
+              >
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="h-10 sm:h-12 object-contain opacity-60 hover:opacity-100 transition-opacity duration-200 filter grayscale"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
       </div>
     </section>
   );

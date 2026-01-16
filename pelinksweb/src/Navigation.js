@@ -49,7 +49,22 @@ const Navigation = () => {
         { name: 'Pelinks Solutions', href: '/#solutions' }
       ]
     },
-    { name: 'Industries We Serve', href: '/industries' },
+    {
+      name: 'Industries We Serve',
+      href: '/industries',
+      submenu: [
+        { name: 'Real Estate & Property Development', href: '/industries/real-estate' },
+        { name: 'Retail & Commercial Businesses', href: '/industries/retail' },
+        { name: 'Hospitality (Hotels, Clubs & Restaurants)', href: '/industries/hospitality' },
+        { name: 'Government & Public Institutions', href: '/industries/government' },
+        { name: 'Education (Schools, Colleges & Universities)', href: '/industries/education' },
+        { name: 'Healthcare (Hospitals & Clinics)', href: '/industries/healthcare' },
+        { name: 'Banking & Financial Institutions', href: '/industries/banking' },
+        { name: 'Oil & Gas, Engineering & Utilities', href: '/industries/oil-gas' },
+        { name: 'Religious Organizations & Event Centers', href: '/industries/religious' },
+        { name: 'Manufacturing & Industrial Facilities', href: '/industries/manufacturing' }
+      ]
+    },
     { name: 'Gallery', href: '/gallery' },
     {
       name: 'Resources',

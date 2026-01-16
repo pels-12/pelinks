@@ -32,9 +32,9 @@ export default function LandingPage({ onEnter }) {
       onTouchStart={handleEnter}
     >
       <img
-        src={process.env.PUBLIC_URL + '/PELINKS LOGO WITHOUT  TAGLINE PNG FORMAT.png'}
+        src={process.env.PUBLIC_URL + '/PSL_WHITE_ICON_PNG.png'}
         alt="Pelinks Synergy Logo"
-        className="w-32 h-32 mb-6 drop-shadow-xl rounded-full bg-light"
+        className="w-40 h-40 mb-6 drop-shadow-xl"
       />
       <h1 className="text-3xl font-bold mb-2 tracking-wide">Pelinks Synergy Ltd.</h1>
       <h2 className="text-xl font-semibold mb-4 italic">Top Notch Service</h2>

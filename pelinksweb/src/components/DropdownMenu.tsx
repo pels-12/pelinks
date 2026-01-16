@@ -61,7 +61,7 @@ export default function DropdownMenu({ label, items, className = '' }: DropdownM
               <Link
                 key={index}
                 to={item.href}
-                className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[#003459] hover:bg-slate-50 transition-colors duration-150 no-underline"
+                className="block px-4 py-2.5 text-sm text-left text-gray-600 hover:text-[#003459] hover:bg-slate-50 transition-colors duration-150 no-underline"
               >
                 {item.label}
               </Link>
@@ -69,7 +69,7 @@ export default function DropdownMenu({ label, items, className = '' }: DropdownM
               <a
                 key={index}
                 href={item.href}
-                className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[#003459] hover:bg-slate-50 transition-colors duration-150 no-underline"
+                className="block px-4 py-2.5 text-sm text-left text-gray-600 hover:text-[#003459] hover:bg-slate-50 transition-colors duration-150 no-underline"
               >
                 {item.label}
               </a>

@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import InfoBar from './InfoBar';
 
 const GalleryPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -247,6 +248,7 @@ const GalleryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#003459]">
+      <InfoBar phone={["+234 814 361 7840", "+234 802 517 4610"]} email="hello@pelinks.com.ng" />
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}

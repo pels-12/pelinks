@@ -39,7 +39,7 @@ const testimonials = [
 const stats = [
   { label: "Projects Delivered", value: "350+" },
   { label: "Industries Served", value: "12" },
-  { label: "Years of Experience", value: "15" }
+  { label: "Years of Experience", value: "6" }
 ];
 
 export default function TestimonialsSection() {
@@ -63,7 +63,7 @@ export default function TestimonialsSection() {
         >
           <p className="text-[#007EA7] text-sm font-semibold tracking-[0.18em] uppercase mb-3">Trusted by Clients</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F5F5] mb-4">What Our Clients Say</h2>
-          <p className="text-[#BFC7CE] text-base sm:text-lg">Calm, verified feedback from organizations that rely on us across Nigeria.</p>
+          <p className="text-[#BFC7CE] text-base sm:text-lg">Calm, verified feedback from organizations that rely on us across Nigeria. <span className="text-[#007EA7] font-semibold">6+ years of proven experience.</span></p>
         </motion.div>
 
         <motion.div

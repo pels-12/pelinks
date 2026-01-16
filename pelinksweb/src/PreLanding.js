@@ -44,17 +44,23 @@ const PreLanding = ({ onComplete }) => {
             className="absolute inset-0 w-full h-full bg-cover bg-center"
             style={{ backgroundImage: `url(${services[activeServiceIndex].image})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#003459]/90 via-[#003459]/85 to-[#001a2b]/95" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#001a2b]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#001a2e]/95 via-[#001a2e]/90 to-[#00080d]/98" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#00080d]/85 via-transparent to-transparent" />
         </motion.div>
       </AnimatePresence>
 
       <div className="pre-landing-content">
         <div className="logo-section">
+          <img
+            src={process.env.PUBLIC_URL + '/PSL_WHITE_CYAN_ICON_PNG.png'}
+            alt="Pelinks Synergy Logo"
+            className="w-96 h-40 drop-shadow-2xl"
+          />
           <h1 className="logo-text">Pelinks Synergy Ltd</h1>
         </div>
 
-        <p className="tagline">Welcome to Pelinks Synergy - your one stop shop</p>
+        <p className="tagline">Welcome to Pelinks Synergy</p>
+        <p className="tagline">Top Notch services</p>
 
         <motion.div
           className="services-wrapper"
