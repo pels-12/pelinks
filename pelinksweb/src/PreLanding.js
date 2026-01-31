@@ -54,7 +54,7 @@ const PreLanding = ({ onComplete }) => {
           <img
             src={process.env.PUBLIC_URL + '/PSL_WHITE_CYAN_ICON_PNG.png'}
             alt="Pelinks Synergy Logo"
-            className="w-[28rem] md:w-96 h-40 drop-shadow-2xl"
+            className="w-80 md:w-96 h-40 drop-shadow-2xl"
           />
           <h1 className="logo-text">Pelinks Synergy Ltd</h1>
         </div>
