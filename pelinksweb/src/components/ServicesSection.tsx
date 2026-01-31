@@ -157,6 +157,18 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.3 });
 
+  const getServicePath = (id: number) => {
+    switch (id) {
+      case 1: return '/services/pelinks-visuals';
+      case 2: return '/services/pelinks-solutions';
+      case 3: return '/services/pelinks-imprint';
+      case 4: return '/services/fabrication-construction';
+      case 5: return '/services/procurement-contracts';
+      case 6: return '/services/it-consultancy';
+      default: return '/contact';
+    }
+  };
+
   return (
     <motion.div
       ref={cardRef}
@@ -188,9 +200,12 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         ))}
       </ul>
 
-      <button className="w-full px-6 py-3 bg-[#007EA7] text-white font-semibold rounded-lg hover:bg-[#006891] transition-colors active:scale-95">
+      <Link
+        to={getServicePath(service.id)}
+        className="w-full px-6 py-3 bg-[#007EA7] text-white font-semibold rounded-lg hover:bg-[#006891] transition-colors active:scale-95 block text-center"
+      >
         Learn More
-      </button>
+      </Link>
     </motion.div>
   );
 }

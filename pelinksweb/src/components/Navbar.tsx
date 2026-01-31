@@ -41,14 +41,14 @@ function Navbar({ onLoginClick }: NavbarProps) {
       href: '/#services',
       isRoute: true,
       submenu: [
-        { label: 'Signage & LED Displays', href: '/#signage', isRoute: true },
-        { label: 'Smart Home Technology', href: '/#smart-home', isRoute: true },
-        { label: 'Security Systems', href: '/#security', isRoute: true },
-        { label: 'General Printing', href: '/#printing', isRoute: true },
-        { label: 'Fabrication & Construction', href: '/#fabrication', isRoute: true },
-        { label: 'Cladding & Facade Systems', href: '/#cladding', isRoute: true },
-        { label: 'IT & Tech Consultancy', href: '/#it-tech', isRoute: true },
-        { label: 'Procurement & Contracts', href: '/#procurement', isRoute: true },
+        { label: 'Signage & LED Displays', href: '/services/pelinks-visuals', isRoute: true },
+        { label: 'Smart Home Technology', href: '/services/pelinks-solutions', isRoute: true },
+        { label: 'Security Systems', href: '/services/pelinks-solutions', isRoute: true },
+        { label: 'General Printing', href: '/services/pelinks-imprint', isRoute: true },
+        { label: 'Fabrication & Construction', href: '/services/fabrication-construction', isRoute: true },
+        { label: 'Cladding & Facade Systems', href: '/services/pelinks-visuals', isRoute: true },
+        { label: 'IT & Tech Consultancy', href: '/services/it-consultancy', isRoute: true },
+        { label: 'Procurement & Contracts', href: '/services/procurement-contracts', isRoute: true },
       ],
     },
     {
@@ -57,7 +57,7 @@ function Navbar({ onLoginClick }: NavbarProps) {
       isRoute: true,
       submenu: [
         { label: 'Pelinks Visuals', href: '/pelinks-visuals', isRoute: true },
-        { label: 'Pelinks Solutions', href: '/#solutions', isRoute: true },
+        { label: 'Pelinks Solutions', href: '/services/pelinks-solutions', isRoute: true },
       ],
     },
     {
